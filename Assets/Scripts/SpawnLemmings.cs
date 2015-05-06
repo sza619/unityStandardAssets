@@ -11,36 +11,36 @@ public class SpawnLemmings : MonoBehaviour {
 
 	}
 
-	int frame=0;
+	int frame = 0;
 	void Update () {
+
 		frame++;
 
-		if (frame % 15 != 0) {
+		if (frame % 60 != 0) {
 			return;
 		}
 
 		var n = Random.Range(0, 3);
 		switch (n) {
 		case 0:
-			MakeALemmingJump ();
+			MakeALemmingJump();
 			break;
 		case 1:
-			MakeALemmingDie ();
+			MakeALemmingDie();
 			break;
 		case 2:
-			MakeALemmingSpawn ();
+			MakeALemmingSpawn();
 			break;
 		}
 	}
 
 	void MakeALemmingJump() {
-		var ind = randomLemmingIndex ();
-		lemmingList [ind].GetComponent<Move> ().aboutToJump = true;
+		lemmingList[lemmingList.Count-1].GetComponent<Move>().aboutToJump = true;
 	}
 
 	void MakeALemmingDie() {
-		var ind = randomLemmingIndex ();
-		lemmingList [ind].GetComponent<Move> ().aboutToDie = true;
+		var ind = randomLemmingIndex();
+		lemmingList[ind].GetComponent<Move>().aboutToDie = true;
 	}
 
 	void MakeALemmingSpawn() {
@@ -49,7 +49,7 @@ public class SpawnLemmings : MonoBehaviour {
 	}
 
 	int randomLemmingIndex() {
-		return Random.Range(0, lemmingList.Count);
+		return Random.Range(0, lemmingList.Count-1);
 	}
 
 }
