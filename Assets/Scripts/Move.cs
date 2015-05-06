@@ -29,19 +29,19 @@ public class Move : MonoBehaviour {
 	}
 
 	void FixedUpdate () {
-		Rigidbody rigidbody = GetComponent<Rigidbody>();
-		float xPos = rigidbody.position.x;
-		if (Input.GetKeyDown(KeyCode.Y)) {
-			aboutToJump = true;
+		Rigidbody lemming = GetComponent<Rigidbody>();
+		listenForJump();
+		listenForDeath();
+		if (notNearLedge(lemming)) {
+			lemming.velocity = new Vector3(movementSpeed, lemming.velocity.y, 0);
 		}
-		if (xPos <= xStopPos && xPos >= xStartPos) {
-			rigidbody.velocity = new Vector3(movementSpeed, rigidbody.velocity.y, 0);
-		}
-		if (xPos >= xStopPos || xPos <= xStartPos) {
-			if(aboutToJump && xPos >= xStopPos && xPos < stepFourPos) {
-				jump(rigidbody);
+		if (atLedge(lemming)) {
+			if(aboutToJump && atRightLedge(lemming)) {
+				jump(lemming);
+			} else if(aboutToDie && atRightLedge(lemming)) {
+				die(lemming);
 			} else {
-				turnAround(rigidbody);
+				turnAround(lemming);
 			}
 		}
 	}
@@ -55,6 +55,11 @@ public class Move : MonoBehaviour {
 		StartCoroutine(updatePositions());
 	}
 
+	void die(Rigidbody rigidbody) {
+		rigidbody.velocity = new Vector3(movementSpeed/4, rigidbody.velocity.y, 0);
+		updatePositions();
+	}
+
 	void turnAround(Rigidbody rigidbody) {
 		movementSpeed = movementSpeed*-1;
 		rigidbody.velocity = new Vector3(movementSpeed, rigidbody.velocity.y, 0);
@@ -65,5 +70,34 @@ public class Move : MonoBehaviour {
 		xStopPos = stepPos[currentStep]+stepOffset;
 		yield return new WaitForSeconds(1);
 		xStartPos = stepPos[currentStep]-stepOffset;
+	}
+
+	void listenForJump() {
+		if (Input.GetKeyDown(KeyCode.J)) {
+			aboutToDie = false;
+			aboutToJump = true;
+		}
+	}
+
+	void listenForDeath() {
+		if (Input.GetKeyDown(KeyCode.D)) {
+			aboutToJump = false;
+			aboutToDie = true;
+		}
+	}
+
+	bool atLedge(Rigidbody rigidbody) {
+		float xPos = rigidbody.position.x;
+		return xPos >= xStopPos || xPos <= xStartPos;
+	}
+
+	bool atRightLedge(Rigidbody rigidbody) {
+		float xPos = rigidbody.position.x;
+		return xPos >= xStopPos && xPos < stepFourPos;
+	}
+
+	bool notNearLedge(Rigidbody rigidbody) {
+		float xPos = rigidbody.position.x;
+		return xPos <= xStopPos && xPos >= xStartPos;
 	}
 }
