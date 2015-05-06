@@ -40,6 +40,7 @@ public class Move : MonoBehaviour {
 		if (xPos >= this.funnelOneStop || xPos <= this.funnelOneStart) {
 			movementSpeed = movementSpeed*-1;
 			rigidBody.velocity = new Vector3(movementSpeed, rigidBody.velocity.y, 0);
+			transform.Rotate(new Vector3(0, 180, 0));
 		}
 	}
 }
