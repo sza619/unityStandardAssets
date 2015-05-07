@@ -5,7 +5,7 @@ public class Move : MonoBehaviour {
 
 	private float xStartLimit = 0;
 	private float xStopLimit = 0;
-	private int currentStep = 0;
+	public int currentStep = 0;
 	public float jumpHeight = 2.5f;
 	public float movementSpeed = 1.5f;
 	public bool jumping = false;
@@ -54,6 +54,7 @@ public class Move : MonoBehaviour {
 	void die(Rigidbody rigidbody) {
 		rigidbody.velocity = new Vector3(movementSpeed/4, rigidbody.velocity.y, 0);
 		updateLimits();
+		updatePositions();
 	}
 
 	void turnAround(Rigidbody rigidbody) {

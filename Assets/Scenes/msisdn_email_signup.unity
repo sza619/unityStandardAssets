@@ -160,7 +160,7 @@ GameObject:
   - 23: {fileID: 216228118}
   - 102: {fileID: 216228117}
   m_Layer: 0
-  m_Name: Step 1 users
+  m_Name: Signup form users
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -185,7 +185,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 216228115}
-  m_Text: 500 users
+  m_Text: 300 users
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -762,7 +762,7 @@ Transform:
   m_LocalScale: {x: .0250000004, y: .0250000004, z: 1}
   m_Children: []
   m_Father: {fileID: 2085732215}
-  m_RootOrder: 1
+  m_RootOrder: 4
 --- !u!102 &821824001
 TextMesh:
   serializedVersion: 3
@@ -916,7 +916,7 @@ GameObject:
   - 23: {fileID: 970772214}
   - 102: {fileID: 970772213}
   m_Layer: 0
-  m_Name: Step 1 users 3
+  m_Name: Redirected users
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -933,7 +933,7 @@ Transform:
   m_LocalScale: {x: .0250000004, y: .0250000004, z: 1}
   m_Children: []
   m_Father: {fileID: 2085732215}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!102 &970772213
 TextMesh:
   serializedVersion: 3
@@ -941,7 +941,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 970772211}
-  m_Text: 500 users
+  m_Text: 200 users
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -1064,7 +1064,7 @@ GameObject:
   - 23: {fileID: 1004106622}
   - 102: {fileID: 1004106621}
   m_Layer: 0
-  m_Name: Step 1 users 2
+  m_Name: Veriify PIN users
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1077,7 +1077,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1004106620}
-  m_Text: 500 users
+  m_Text: 200 users
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -1126,7 +1126,7 @@ Transform:
   m_LocalScale: {x: .0250000004, y: .0250000004, z: 1}
   m_Children: []
   m_Father: {fileID: 2085732215}
-  m_RootOrder: 3
+  m_RootOrder: 1
 --- !u!1001 &1010702747
 Prefab:
   m_ObjectHideFlags: 0
@@ -1548,7 +1548,7 @@ GameObject:
   - 23: {fileID: 1394052397}
   - 102: {fileID: 1394052396}
   m_Layer: 0
-  m_Name: Step 1 users 1
+  m_Name: Confirmation page users
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1573,7 +1573,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1394052394}
-  m_Text: 500 users
+  m_Text: 100 users
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -1693,7 +1693,7 @@ GameObject:
   - 4: {fileID: 1694331414}
   - 114: {fileID: 1694331413}
   m_Layer: 0
-  m_Name: SpawnPoint
+  m_Name: SpawnAndCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2124,10 +2124,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 216228116}
-  - {fileID: 821824000}
-  - {fileID: 1394052395}
   - {fileID: 1004106623}
+  - {fileID: 1394052395}
   - {fileID: 970772212}
+  - {fileID: 821824000}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!1 &2091584492 stripped
