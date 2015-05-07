@@ -1482,7 +1482,7 @@ Transform:
   m_LocalScale: {x: .0250000004, y: .0250000004, z: 1}
   m_Children: []
   m_Father: {fileID: 2085732215}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!102 &970772213
 TextMesh:
   serializedVersion: 3
@@ -2389,7 +2389,7 @@ Transform:
   m_LocalScale: {x: .0250000004, y: .0250000004, z: 1}
   m_Children: []
   m_Father: {fileID: 2085732215}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!102 &1394052396
 TextMesh:
   serializedVersion: 3
@@ -2594,6 +2594,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f52952e884d4ebd8378dfe247899ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  singupform: {fileID: 216228116}
+  singupformDeath: {fileID: 725886094}
+  verifyPin: {fileID: 1004106623}
+  verifyPinDeath: {fileID: 283832545}
+  confirmationPage: {fileID: 1394052395}
+  confirmationPageDeath: {fileID: 1391641562}
+  redirected: {fileID: 1394052395}
+  redirectedCastle: {fileID: 970772212}
   spawnLemmings: {fileID: 767285109}
 --- !u!4 &1694331414
 Transform:
@@ -3151,8 +3159,8 @@ Transform:
   - {fileID: 821824000}
   - {fileID: 216228116}
   - {fileID: 1004106623}
-  - {fileID: 1394052395}
   - {fileID: 970772212}
+  - {fileID: 1394052395}
   - {fileID: 725886094}
   - {fileID: 283832545}
   - {fileID: 1391641562}
