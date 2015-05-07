@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Move : MonoBehaviour {
 
-	private float xStartPos = 0;
-	private float xStopPos = 0;
+	private float xStartLimit = 0;
+	private float xStopLimit = 0;
 	private int currentStep = 0;
 	public float jumpHeight = 2.5f;
 	public float movementSpeed = 1.5f;
@@ -13,18 +13,14 @@ public class Move : MonoBehaviour {
 	public bool aboutToJump;
 	public bool aboutToDie;
 
-	public float stepOffset    = 1.85f;
-	public int[] stepPos       = {-6, -2, 2, 6};
-	public float stepOnePos    = -6;
-	public float stepTwoPos    = -2;
-	public float stepThreePos  =  2;
-	public float stepFourPos   =  6;
+	public float stepOffset    = 1.85f; //half the width of a platform
+	public int[] stepPos       = {-6, -2, 2, 6}; //center of the platforms
 
 	void Start () {
-		xStartPos = stepPos[currentStep]-stepOffset;
-		xStopPos = stepPos[currentStep]+stepOffset;
+		xStartLimit = stepPos[currentStep]-stepOffset;
+		xStopLimit = stepPos[currentStep]+stepOffset;
 		Rigidbody rigidbody = GetComponent<Rigidbody> ();
-		rigidbody.position = new Vector3 (xStartPos+1, 0, 0);	
+		rigidbody.position = new Vector3 (xStartLimit+1, 0, Random.Range(-0.5f, 0f));
 		rigidbody.velocity = new Vector3(movementSpeed, 0, 0);	
 	}
 
@@ -52,12 +48,12 @@ public class Move : MonoBehaviour {
 		rigidbody.AddForce(Vector3.up*jumpHeight, ForceMode.VelocityChange);
 		aboutToJump = false;
 		currentStep++;
-		StartCoroutine(updatePositions());
+		StartCoroutine(updateLimits());
 	}
 
 	void die(Rigidbody rigidbody) {
 		rigidbody.velocity = new Vector3(movementSpeed/4, rigidbody.velocity.y, 0);
-		updatePositions();
+		updateLimits();
 	}
 
 	void turnAround(Rigidbody rigidbody) {
@@ -66,10 +62,10 @@ public class Move : MonoBehaviour {
 		transform.Rotate(new Vector3(0, 180, 0));
 	}
 
-	IEnumerator updatePositions() {
-		xStopPos = stepPos[currentStep]+stepOffset;
+	IEnumerator updateLimits() {
+		xStopLimit = stepPos[currentStep]+stepOffset;
 		yield return new WaitForSeconds(1);
-		xStartPos = stepPos[currentStep]-stepOffset;
+		xStartLimit = stepPos[currentStep]-stepOffset;
 	}
 
 	void listenForJump() {
@@ -88,16 +84,16 @@ public class Move : MonoBehaviour {
 
 	bool atLedge(Rigidbody rigidbody) {
 		float xPos = rigidbody.position.x;
-		return xPos >= xStopPos || xPos <= xStartPos;
+		return xPos >= xStopLimit || xPos <= xStartLimit;
 	}
 
 	bool atRightLedge(Rigidbody rigidbody) {
 		float xPos = rigidbody.position.x;
-		return xPos >= xStopPos && xPos < stepFourPos;
+		return xPos >= xStopLimit && xPos < stepPos[stepPos.Length-1];
 	}
 
 	bool notNearLedge(Rigidbody rigidbody) {
 		float xPos = rigidbody.position.x;
-		return xPos <= xStopPos && xPos >= xStartPos;
+		return xPos <= xStopLimit && xPos >= xStartLimit;
 	}
 }
