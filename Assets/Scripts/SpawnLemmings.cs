@@ -27,12 +27,12 @@ public class SpawnLemmings : MonoBehaviour {
 		MakeALemmingSpawn ();
 	}
 
-	int state_increment=400;
+	int state_increment=600;
 
 	int frame = 0;
 	void Update () {
 		frame++;
-		if (frame % 10 == 0) {
+		if (frame % 20 == 0) {
 			MakeALemmingSpawn ();
 		}
 
