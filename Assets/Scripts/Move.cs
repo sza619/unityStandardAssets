@@ -10,14 +10,14 @@ public class Move : MonoBehaviour {
 	private float xStartLimit = 0;
 	private float xStopLimit = 0;
 	public int currentStep = 0;
-	public float jumpHeight = 2.5f;
+	public float jumpHeight; // set in editor
 	public float movementSpeed = .5f;
 	public bool jumping = false;
 
 	public bool aboutToJump;
 	public bool aboutToDie;
 
-	public float stepOffset    = 1.85f; //half the width of a platform
+	public float stepOffset; //half the width of a platform, set in editor
 	public int[] stepPos       = {-6, -2, 2, 6}; //center of the platforms
 
 	void Start () {
@@ -68,8 +68,11 @@ public class Move : MonoBehaviour {
 	}
 
 	void die(Rigidbody rigidbody) {
-		rigidbody.velocity = new Vector3(movementSpeed/4, rigidbody.velocity.y, 0);
-		updateLimits();
+		rigidbody.angularVelocity = Vector3.zero;
+		rigidbody.velocity = new Vector3(movementSpeed/8.0f, 0, 0);
+		rigidbody.AddForce(Vector3.up*jumpHeight/2.0f, ForceMode.VelocityChange);
+		currentStep++;
+		StartCoroutine(updateLimits());
 	}
 
 	void turnAround(Rigidbody rigidbody) {
