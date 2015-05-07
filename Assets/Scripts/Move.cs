@@ -3,6 +3,10 @@ using System.Collections;
 
 public class Move : MonoBehaviour {
 
+	public Transform singupformDeath;
+	public Transform verifyPinDeath;
+	public Transform confirmationPageDeath;
+
 	private float xStartLimit = 0;
 	private float xStopLimit = 0;
 	public int currentStep = 0;
@@ -59,7 +63,9 @@ public class Move : MonoBehaviour {
 		rigidbody.angularVelocity = Vector3.zero;
 		rigidbody.velocity = new Vector3(movementSpeed, 0, 0);
 		rigidbody.AddForce(Vector3.up*jumpHeight, ForceMode.VelocityChange);
-		aboutToJump = false;
+		if (Random.value < 0.25) {
+			aboutToJump = false;
+		}
 		currentStep++;
 		StartCoroutine(updateLimits());
 	}

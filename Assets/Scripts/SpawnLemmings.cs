@@ -29,9 +29,13 @@ public class SpawnLemmings : MonoBehaviour {
 	int frame = 0;
 	void Update () {
 		frame++;
+		if (frame % 10 == 0) {
+			MakeALemmingSpawn ();
+		}
+
 		CountAndUpdateLabels ();
 
-		if (frame > 1200) {
+		if (frame > state_increment*5) {
 			singupform.GetComponent<TextMesh> ().text = "LOL";
 			singupformDeath.GetComponent<TextMesh> ().text = "LOL";
 			
@@ -47,12 +51,10 @@ public class SpawnLemmings : MonoBehaviour {
 			CountAndUpdateLabels ();
 		}
 
-		if (frame < 5) {
-			MakeALemmingSpawn ();
-		}
-
-		if (frame > 600 && frame % 2 == 0) {
-			MakeALemmingSpawn ();
+		if (frame > state_increment*4) {
+			for (int i=0; i<2; i++) {
+				MakeALemmingSpawn ();
+			}
 		}
 
 		if (frame % 30 != 0) {
@@ -72,7 +74,7 @@ public class SpawnLemmings : MonoBehaviour {
 			break;
 		}
 		
-		if (frame > 300) {
+		if (frame > state_increment*3) {
 			for (var i=0; i<lemmingList.Count; i++) {
 				if (lemmingList[i] != null) {
 					lemmingList[i].GetComponent<Move>().aboutToJump = true;
@@ -80,7 +82,7 @@ public class SpawnLemmings : MonoBehaviour {
 			}
 		}
 		
-		if (frame > 1200) {
+		if (frame > state_increment*4) {
 			for (int i=0; i<lemmingList.Count; i++) {
 				if (lemmingList[i] != null) {
 					lemmingList[i].GetComponent<Move>().movementSpeed*=1.9f;
@@ -93,7 +95,6 @@ public class SpawnLemmings : MonoBehaviour {
 		var ind = randomLemmingIndex();
 		if (lemmingList [ind] != null) {
 			lemmingList [ind].GetComponent<Move> ().aboutToJump = true;
-			lemmingList.RemoveAt (ind);
 		}
 	}
 	
@@ -102,7 +103,6 @@ public class SpawnLemmings : MonoBehaviour {
 		if (lemmingList [ind] != null) {
 			lemmingList [ind].GetComponent<Move> ().aboutToDie = true;
 		}
-		lemmingList.RemoveAt (ind);
 	}
 	
 	void MakeALemmingSpawn() {

@@ -305,7 +305,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 216228115}
-  m_Text: 300 users
+  m_Text: 0 users
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -453,7 +453,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 283832544}
-  m_Text: 59
+  m_Text: 0
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -1161,7 +1161,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 725886091}
-  m_Text: 59
+  m_Text: 0
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -1251,7 +1251,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 821823999}
-  m_Text: 100
+  m_Text: 0
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -1490,7 +1490,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 970772211}
-  m_Text: 200 users
+  m_Text: 0 users
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -1626,7 +1626,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1004106620}
-  m_Text: 200 users
+  m_Text: 0 users
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -2323,7 +2323,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1391641561}
-  m_Text: 59
+  m_Text: 0
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -2397,7 +2397,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1394052394}
-  m_Text: 100 users
+  m_Text: 0 users
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -2600,8 +2600,8 @@ MonoBehaviour:
   verifyPinDeath: {fileID: 283832545}
   confirmationPage: {fileID: 1394052395}
   confirmationPageDeath: {fileID: 1391641562}
-  redirected: {fileID: 1394052395}
-  redirectedCastle: {fileID: 970772212}
+  redirected: {fileID: 970772212}
+  redirectedCastle: {fileID: 821824000}
   spawnLemmings: {fileID: 767285109}
 --- !u!4 &1694331414
 Transform:
