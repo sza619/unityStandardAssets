@@ -270,6 +270,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19821508, guid: a42bcd8540e3a45dc801fa5abeddebcc, type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a42bcd8540e3a45dc801fa5abeddebcc, type: 2}
   m_IsPrefabParent: 0
@@ -3529,8 +3533,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .28689146, y: 1, z: 1.9615531}
-  m_Center: {x: .356553078, y: 0, z: -.480776548}
+  m_Size: {x: .28689146, y: 4.39374065, z: 1.9615531}
+  m_Center: {x: .356553078, y: 1.69687033, z: -.480776548}
 --- !u!33 &1708623248
 MeshFilter:
   m_ObjectHideFlags: 0
