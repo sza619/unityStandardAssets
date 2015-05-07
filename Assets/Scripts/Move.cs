@@ -29,12 +29,18 @@ public class Move : MonoBehaviour {
 	//	rigidbody.velocity = new Vector3(movementSpeed, 0, 0);	
 	}
 
+	int frame=0;
 	void FixedUpdate () {
+		frame++;
+
 		Rigidbody lemming = GetComponent<Rigidbody>();
 		listenForJump();
 		listenForDeath();
 		if (notNearLedge(lemming) || inTower(lemming)) {
 			lemming.velocity = new Vector3(movementSpeed, lemming.velocity.y, 0);
+			if (!aboutToDie && !aboutToJump) {
+				lemming.AddForce(Vector3.up*Mathf.Sin (frame)/2.0f, ForceMode.VelocityChange);
+			}
 		}
 		if (atLedge(lemming) && !inTower(lemming)) {
 			if(aboutToJump && atRightLedge(lemming)) {

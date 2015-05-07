@@ -9,16 +9,19 @@ public class CameraAngles : MonoBehaviour {
 	public Camera walkAwayAngleCam;
 	public Camera walkTowardsAngleCam;
 	public Camera topDown;
-	public Camera walkWithCam;
 
 	void Start () {
 		StartCoroutine(gogoCameras ());
 	}
 
+	void OnGUI() {
+		Event e = Event.current;
+		if (e.isKey)
+			Debug.Log("Detected key code: " + e.keyCode);
+		
+	}
+	
 	IEnumerator gogoCameras() {
-		switchToCam (walkWithCam);
-		yield return new WaitForSeconds(50f);
-
 		switchToCam (mainCam);
 		yield return new WaitForSeconds(5f);
 

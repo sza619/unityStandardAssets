@@ -2459,6 +2459,10 @@ Prefab:
       propertyPath: m_Name
       value: CameraLemming
       objectReference: {fileID: 0}
+    - target: {fileID: 11450444, guid: 6223f2d12d22f40cc96110230a20c5a3, type: 2}
+      propertyPath: fireworksPrefab
+      value: 
+      objectReference: {fileID: 1296551102}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6223f2d12d22f40cc96110230a20c5a3, type: 2}
   m_IsPrefabParent: 0
