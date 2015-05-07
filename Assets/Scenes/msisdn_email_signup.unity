@@ -4165,7 +4165,7 @@ MonoBehaviour:
   walkAwayAngleCam: {fileID: 2124456788}
   walkTowardsAngleCam: {fileID: 1398857444}
   topDown: {fileID: 993432038}
-  firstPersonCam: {fileID: 0}
+  firstPersonCam: {fileID: 149885419}
 --- !u!1 &1694331412
 GameObject:
   m_ObjectHideFlags: 0

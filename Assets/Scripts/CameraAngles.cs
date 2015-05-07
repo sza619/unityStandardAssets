@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class CameraAngles : MonoBehaviour {
-
+	
 	public Camera mainCam;
 	public Camera walkAwayCam;
 	public Camera walkTowardsCam;
@@ -10,11 +10,11 @@ public class CameraAngles : MonoBehaviour {
 	public Camera walkTowardsAngleCam;
 	public Camera topDown;
 	public Camera firstPersonCam;
-
+	
 	void Start () {
 		switchToCam (mainCam);
 	}
-
+	
 	void OnGUI() {
 		Event e = Event.current;
 		if (e.isKey) {
@@ -54,5 +54,5 @@ public class CameraAngles : MonoBehaviour {
 		topDown.enabled = false;
 		camera.enabled = true;
 	}
-
+	
 }
