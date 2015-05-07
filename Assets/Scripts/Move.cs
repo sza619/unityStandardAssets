@@ -22,8 +22,6 @@ public class Move : MonoBehaviour {
 	public float stepOffset; //half the width of a platform, set in editor
 	public int[] stepPos       = {-6, -2, 2, 6}; //center of the platforms
 
-	public bool immortal=false;
-
 	void Start () {
 		xStartLimit = stepPos[currentStep]-stepOffset;
 		xStopLimit = stepPos[currentStep]+stepOffset;
@@ -48,7 +46,7 @@ public class Move : MonoBehaviour {
 		if (atLedge(lemming) && !inTower(lemming)) {
 			if(aboutToJump && atRightLedge(lemming)) {
 				jump(lemming);
-			} else if(!immortal && aboutToDie && atRightLedge(lemming)) {
+			} else if(aboutToDie && atRightLedge(lemming)) {
 				die(lemming);
 			} else {
 				turnAround(lemming);
@@ -61,14 +59,7 @@ public class Move : MonoBehaviour {
 			ParticleSystem fireworks = Instantiate(fireworksPrefab);
 			fireworks.Play();
 			SpawnLemmings.redirectCount++;
-			if (!immortal) {
-				Destroy(gameObject);
-			} else {
-				currentStep=0;
-				transform.Translate(Vector3.left*13.0f);
-				xStopLimit = stepPos[currentStep]+stepOffset;
-				xStartLimit = stepPos[currentStep]-stepOffset;
-			}
+			Destroy(gameObject);
 		}
 		else if (col.gameObject.name == "Dirt bottom") {
 			ParticleSystem blood = Instantiate(bloodPrefab);
