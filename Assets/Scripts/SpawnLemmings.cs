@@ -23,12 +23,42 @@ public class SpawnLemmings : MonoBehaviour {
 	public static int redirectCount=0;
 	public static int[] deathSteps = new int[3];
 
+	public Transform followCamera;
+
 	void Start () {
 		MakeALemmingSpawn ();
 	}
 
 	int state_increment=600;
 
+
+	void OnGUI() {
+		Event e = Event.current;
+		if (e.isKey) {
+			switch(e.keyCode) {
+			case KeyCode.Alpha7:
+				Transform lemming = Instantiate (spawnLemmings, new Vector3 (Random.Range (-5.0f, -7.4f), 0.733f, Random.Range(-0.85f, -0.6f)), spawnLemmings.rotation) as Transform;
+				lemming.transform.parent = spawnLemmings.parent;
+				if (lemming.rotation.y > 0) {
+					lemming.Rotate (new Vector3 (0, 180, 0));
+					lemming.GetComponent<Move> ().movementSpeed *= -1.0f;
+				} 
+				lemming.GetComponent<Move> ().movementSpeed *= 3.0f;
+				if (Random.value > 0.6) {
+					lemming.GetComponent<Move> ().aboutToJump=true;
+				}
+				lemming.GetComponent<Move> ().movementSpeed *= Random.Range (0.75f, 1f);
+
+				Transform camera = Instantiate (followCamera);
+				camera.parent=lemming;
+				camera.GetComponent<Camera>().enabled=true;
+
+				lemmingList.Add(lemming);
+				break;
+			}
+		}
+	}
+	
 	int frame = 0;
 	void Update () {
 		frame++;

@@ -48,7 +48,7 @@ public class Move : MonoBehaviour {
 		if (atLedge(lemming) && !inTower(lemming)) {
 			if(aboutToJump && atRightLedge(lemming)) {
 				jump(lemming);
-			} else if(aboutToDie && atRightLedge(lemming)) {
+			} else if(!immortal && aboutToDie && atRightLedge(lemming)) {
 				die(lemming);
 			} else {
 				turnAround(lemming);
@@ -61,7 +61,14 @@ public class Move : MonoBehaviour {
 			ParticleSystem fireworks = Instantiate(fireworksPrefab);
 			fireworks.Play();
 			SpawnLemmings.redirectCount++;
-			Destroy(gameObject);
+			if (!immortal) {
+				Destroy(gameObject);
+			} else {
+				currentStep=0;
+				transform.Translate(Vector3.left*13.0f);
+				xStopLimit = stepPos[currentStep]+stepOffset;
+				xStartLimit = stepPos[currentStep]-stepOffset;
+			}
 		}
 		else if (col.gameObject.name == "Dirt bottom") {
 			ParticleSystem blood = Instantiate(bloodPrefab);
