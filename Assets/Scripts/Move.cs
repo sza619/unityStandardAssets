@@ -14,6 +14,7 @@ public class Move : MonoBehaviour {
 	public float movementSpeed = .5f;
 
 	public ParticleSystem fireworksPrefab;
+	public ParticleSystem bloodPrefab;
 
 	public bool aboutToJump;
 	public bool aboutToDie;
@@ -61,6 +62,10 @@ public class Move : MonoBehaviour {
 			Destroy(gameObject);
 		}
 		else if (col.gameObject.name == "Dirt bottom") {
+			ParticleSystem blood = Instantiate(bloodPrefab);
+			blood.transform.position = gameObject.transform.position;
+			blood.transform.position = new Vector3(gameObject.transform.position.x, -3.382f, 0);
+			blood.Play();
 			SpawnLemmings.deathSteps[currentStep]++;
 			Destroy(gameObject);
 		}

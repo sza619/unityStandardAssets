@@ -1376,6 +1376,10 @@ Prefab:
       propertyPath: fireworksPrefab
       value: 
       objectReference: {fileID: 1296551102}
+    - target: {fileID: 11450444, guid: 6223f2d12d22f40cc96110230a20c5a3, type: 2}
+      propertyPath: bloodPrefab
+      value: 
+      objectReference: {fileID: 985554054}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6223f2d12d22f40cc96110230a20c5a3, type: 2}
   m_IsPrefabParent: 0
@@ -2094,6 +2098,11 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!198 &985554054 stripped
+ParticleSystem:
+  m_PrefabParentObject: {fileID: 19868296, guid: 0f00492fa09a940b090c027d838bdb5a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1447348733}
 --- !u!1 &993432037
 GameObject:
   m_ObjectHideFlags: 0
@@ -3444,11 +3453,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 467544, guid: 0f00492fa09a940b090c027d838bdb5a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -3.38199997
+      value: -3.88700008
       objectReference: {fileID: 0}
     - target: {fileID: 467544, guid: 0f00492fa09a940b090c027d838bdb5a, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: .360000014
       objectReference: {fileID: 0}
     - target: {fileID: 467544, guid: 0f00492fa09a940b090c027d838bdb5a, type: 2}
       propertyPath: m_LocalRotation.x
@@ -3469,6 +3478,18 @@ Prefab:
     - target: {fileID: 467544, guid: 0f00492fa09a940b090c027d838bdb5a, type: 2}
       propertyPath: m_RootOrder
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 19868296, guid: 0f00492fa09a940b090c027d838bdb5a, type: 2}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: .400000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 19868296, guid: 0f00492fa09a940b090c027d838bdb5a, type: 2}
+      propertyPath: lengthInSec
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19868296, guid: 0f00492fa09a940b090c027d838bdb5a, type: 2}
+      propertyPath: looping
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0f00492fa09a940b090c027d838bdb5a, type: 2}
@@ -3720,7 +3741,6 @@ MonoBehaviour:
   walkAwayAngleCam: {fileID: 2124456788}
   walkTowardsAngleCam: {fileID: 1398857444}
   topDown: {fileID: 993432038}
-  walkWithCam: {fileID: 149885419}
 --- !u!1 &1694331412
 GameObject:
   m_ObjectHideFlags: 0
