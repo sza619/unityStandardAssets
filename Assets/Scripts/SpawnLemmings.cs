@@ -117,7 +117,6 @@ public class SpawnLemmings : MonoBehaviour {
 		if (Random.value > 0.6) {
 			lemming.GetComponent<Move> ().aboutToJump=true;
 		}
-		lemming.transform.parent = spawnLemmings.parent;
 		lemmingList.Add(lemming);
 	}
 	
