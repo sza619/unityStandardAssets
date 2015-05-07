@@ -23,7 +23,7 @@ public class Move : MonoBehaviour {
 	void Start () {
 		xStartLimit = stepPos[currentStep]-stepOffset;
 		xStopLimit = stepPos[currentStep]+stepOffset;
-		Rigidbody rigidbody = GetComponent<Rigidbody> ();
+	//	Rigidbody rigidbody = GetComponent<Rigidbody> ();
 	//	rigidbody.position = new Vector3 (6f, 2f, .5f);
 	//	rigidbody.velocity = new Vector3(movementSpeed, 0, 0);	
 	}

@@ -112,6 +112,9 @@ public class SpawnLemmings : MonoBehaviour {
 			lemming.GetComponent<Move> ().movementSpeed *= -1.0f;
 		} 
 		lemming.GetComponent<Move> ().movementSpeed *= 3.0f;
+		if (Random.value > 0.6) {
+			lemming.GetComponent<Move> ().aboutToJump=true;
+		}
 		lemmingList.Add(lemming);
 	}
 	
