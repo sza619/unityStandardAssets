@@ -16,7 +16,7 @@ public class SpawnLemmings : MonoBehaviour {
 
 		frame++;
 
-		if (frame % 60 != 0) {
+		if (frame % 15 != 0) {
 			return;
 		}
 
@@ -35,7 +35,8 @@ public class SpawnLemmings : MonoBehaviour {
 	}
 
 	void MakeALemmingJump() {
-		lemmingList[lemmingList.Count-1].GetComponent<Move>().aboutToJump = true;
+		var ind = randomLemmingIndex();
+		lemmingList[ind].GetComponent<Move>().aboutToJump = true;
 	}
 
 	void MakeALemmingDie() {
