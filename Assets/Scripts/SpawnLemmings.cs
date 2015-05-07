@@ -27,7 +27,7 @@ public class SpawnLemmings : MonoBehaviour {
 		MakeALemmingSpawn ();
 	}
 
-	int state_increment=300;
+	int state_increment=400;
 
 	int frame = 0;
 	void Update () {
@@ -86,7 +86,7 @@ public class SpawnLemmings : MonoBehaviour {
 		if (frame > state_increment*4) {
 			for (int i=0; i<lemmingList.Count; i++) {
 				if (lemmingList[i] != null) {
-					lemmingList[i].GetComponent<Move>().movementSpeed*=1.9f;
+					lemmingList[i].GetComponent<Move>().movementSpeed+=5.5f;
 				}
 			}
 		}
@@ -160,5 +160,6 @@ public class SpawnLemmings : MonoBehaviour {
 		confirmationPageDeath.GetComponent<TextMesh> ().text = "" + deathSteps[2];
 		redirected.GetComponent<TextMesh> ().text = "" + redirectCount;
 		redirectedCastle.GetComponent<TextMesh> ().text = "" + redirectCount;
+		redirectedCastle.GetComponent<TextMesh> ().fontSize = 125 + redirectCount;
 	}
 }
