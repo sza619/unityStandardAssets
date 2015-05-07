@@ -32,14 +32,15 @@ public class SpawnLemmings : MonoBehaviour {
 	int frame = 0;
 	void Update () {
 		frame++;
-		if (frame % 20 == 0) {
+
+		if (SceneState.retardMode) {
 			MakeALemmingSpawn ();
-		}
+			for (int i=0; i<lemmingList.Count; i++) {
+				if (lemmingList[i] != null) {
+					lemmingList[i].GetComponent<Move>().movementSpeed=2.5f;
+				}
+			}
 
-		CountAndUpdateLabels ();
-		updateText();
-
-		if (frame > state_increment*5) {
 			singupform.GetComponent<TextMesh> ().text = "LOL";
 			singupformDeath.GetComponent<TextMesh> ().text = "LOL";
 			
@@ -48,15 +49,22 @@ public class SpawnLemmings : MonoBehaviour {
 			
 			confirmationPage.GetComponent<TextMesh> ().text = "LOL";
 			confirmationPageDeath.GetComponent<TextMesh> ().text = "LOL";
-		} else {
-			CountAndUpdateLabels ();
 		}
 
-		if (frame > state_increment*4) {
-			for (int i=0; i<2; i++) {
-				MakeALemmingSpawn ();
+		if (SceneState.fixConnect) {
+			for (int i=0; i<lemmingList.Count; i++) {
+				if (lemmingList[i] != null) {
+					lemmingList[i].GetComponent<Move>().aboutToJump=true;
+				}
 			}
 		}
+
+		if (frame % 20 == 0) {
+			MakeALemmingSpawn ();
+		}
+
+		CountAndUpdateLabels ();
+		updateText();
 
 		if (frame % 30 != 0) {
 			return;
@@ -79,14 +87,6 @@ public class SpawnLemmings : MonoBehaviour {
 			for (var i=0; i<lemmingList.Count; i++) {
 				if (lemmingList[i] != null) {
 					lemmingList[i].GetComponent<Move>().aboutToJump = true;
-				}
-			}
-		}
-		
-		if (frame > state_increment*4) {
-			for (int i=0; i<lemmingList.Count; i++) {
-				if (lemmingList[i] != null) {
-					lemmingList[i].GetComponent<Move>().movementSpeed+=5.5f;
 				}
 			}
 		}
@@ -161,6 +161,6 @@ public class SpawnLemmings : MonoBehaviour {
 		confirmationPageDeath.GetComponent<TextMesh> ().text = "" + deathSteps[2];
 		redirected.GetComponent<TextMesh> ().text = "" + redirectCount;
 		redirectedCastle.GetComponent<TextMesh> ().text = "" + redirectCount;
-		redirectedCastle.GetComponent<TextMesh> ().fontSize = 125 + redirectCount;
+		redirectedCastle.GetComponent<TextMesh> ().fontSize = Mathf.Max (200, redirectCount-frame/10);
 	}
 }

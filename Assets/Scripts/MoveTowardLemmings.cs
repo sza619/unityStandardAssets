@@ -32,11 +32,9 @@ public class MoveTowardLemmings : MonoBehaviour {
 	{
 		Transform [] t = lemmingGroup.GetComponentsInChildren<Transform> ();
 		if (t.Length < 9) {
-			Debug.Log ("Idling");
 			return;
 		} else {
 			lemmingHair = t [8];
-			Debug.Log ("WOO, LOCKING ON TO " + lemmingHair);
 		}
 
 		transform.position = lemmingHair.position;
@@ -49,7 +47,5 @@ public class MoveTowardLemmings : MonoBehaviour {
 			lookTowardCastle = true;
 			transform.Rotate (0, 180, 0);
 		}
-
-		Debug.Log ("LOL");
 	}
 }

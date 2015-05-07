@@ -3,7 +3,9 @@ using System.Collections;
 
 public class SceneState : MonoBehaviour {
 
-	static bool retardMode=false;
+	public static bool retardMode=false;
+	public static bool fixConnect=false;
+
 	public Transform cameraLemming;
 
 	void Start () {
@@ -11,7 +13,7 @@ public class SceneState : MonoBehaviour {
 	}
 	
 	void Update () {
-	
+		
 	}
 
 	void OnGUI() {
@@ -19,13 +21,23 @@ public class SceneState : MonoBehaviour {
 		if (e.isKey) {
 			switch(e.keyCode) {
 			case KeyCode.R:
-				retardMode = !retardMode;
+				retardMode = true;
+				Debug.Log("Retard mode: " + retardMode);
 				break;
-			case KeyCode.Alpha7:
-				cameraLemming.position = new Vector3 (-7.4f, 0.733f, -0.5f);
-				cameraLemming.rotation = Quaternion.identity;
+			case KeyCode.N:
+				retardMode = false;
+				Debug.Log("Retard mode: " + retardMode);
+				break;
+			case KeyCode.F:
+				fixConnect=true;
+				Debug.Log("Fixed connect: " + fixConnect);
+				break;
+			case KeyCode.B:
+				fixConnect=false;
+				Debug.Log("Fixed connect: " + fixConnect);
 				break;
 			}
+
 		}
 	}
 }
