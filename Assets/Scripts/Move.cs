@@ -88,7 +88,7 @@ public class Move : MonoBehaviour {
 		rigidbody.angularVelocity = Vector3.zero;
 		rigidbody.velocity = new Vector3(movementSpeed, 0, 0);
 		rigidbody.AddForce(Vector3.up*jumpHeight, ForceMode.VelocityChange);
-		if (Random.value < 0.25) {
+		if (Random.value < 0.4) {
 			aboutToJump = false;
 		}
 		currentStep++;

@@ -82,14 +82,6 @@ public class SpawnLemmings : MonoBehaviour {
 			MakeALemmingSpawn ();
 			break;
 		}
-		
-		if (frame > state_increment*3) {
-			for (var i=0; i<lemmingList.Count; i++) {
-				if (lemmingList[i] != null) {
-					lemmingList[i].GetComponent<Move>().aboutToJump = true;
-				}
-			}
-		}
 	}
 	
 	void MakeALemmingJump() {
