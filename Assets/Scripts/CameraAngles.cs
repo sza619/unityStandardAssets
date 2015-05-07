@@ -9,40 +9,42 @@ public class CameraAngles : MonoBehaviour {
 	public Camera walkAwayAngleCam;
 	public Camera walkTowardsAngleCam;
 	public Camera topDown;
-
+	public Camera firstPersonCam;
+	
 	void Start () {
-		StartCoroutine(gogoCameras ());
+		switchToCam (mainCam);
 	}
-
+	
 	void OnGUI() {
 		Event e = Event.current;
-		if (e.isKey)
-			Debug.Log("Detected key code: " + e.keyCode);
+		if (e.isKey) {
+			switch(e.keyCode) {
+			case KeyCode.Alpha1:
+				switchToCam (mainCam);
+				break;
+			case KeyCode.Alpha2:
+				switchToCam (walkAwayCam);
+				break;
+			case KeyCode.Alpha3:
+				switchToCam (walkTowardsCam);
+				break;
+			case KeyCode.Alpha4:
+				switchToCam (walkAwayAngleCam);
+				break;
+			case KeyCode.Alpha5:
+				switchToCam (walkTowardsAngleCam);
+				break;
+			case KeyCode.Alpha6:
+				switchToCam (topDown);
+				break;
+			case KeyCode.Alpha7:
+				switchToCam (firstPersonCam);
+				break;
+			}
+		}
 		
 	}
 	
-	IEnumerator gogoCameras() {
-		switchToCam (mainCam);
-		yield return new WaitForSeconds(5f);
-
-		switchToCam (walkAwayCam);
-		yield return new WaitForSeconds(0.5f);
-
-		switchToCam (walkTowardsCam);
-		yield return new WaitForSeconds(0.5f);
-
-		switchToCam (walkAwayAngleCam);
-		yield return new WaitForSeconds(0.5f);
-
-		switchToCam (walkTowardsAngleCam);
-		yield return new WaitForSeconds(0.5f);
-
-		switchToCam (topDown);
-		yield return new WaitForSeconds(2.5f);
-
-		switchToCam (mainCam);
-	}
-
 	void switchToCam(Camera camera) {
 		mainCam.enabled = false;
 		walkAwayCam.enabled = false;
