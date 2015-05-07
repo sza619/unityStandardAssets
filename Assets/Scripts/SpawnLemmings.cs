@@ -106,7 +106,7 @@ public class SpawnLemmings : MonoBehaviour {
 	}
 	
 	void MakeALemmingSpawn() {
-		Transform lemming = Instantiate(spawnLemmings, new Vector3(Random.Range (-4.0f,-7.4f), 0.733f, 0.0f), Quaternion.identity) as Transform;
+		Transform lemming = Instantiate(spawnLemmings, new Vector3(Random.Range (-5.0f,-7.4f), 0.733f, 0.0f), Quaternion.identity) as Transform;
 		Debug.Log ("Spawned lemming: " + lemming);
 		Debug.Log ("Position: " + lemming.position);
 		Debug.Log ("LocalPosition: " + lemming.localPosition);
