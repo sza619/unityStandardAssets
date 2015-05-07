@@ -22,6 +22,8 @@ public class Move : MonoBehaviour {
 	public float stepOffset; //half the width of a platform, set in editor
 	public int[] stepPos       = {-6, -2, 2, 6}; //center of the platforms
 
+	public bool immortal=false;
+
 	void Start () {
 		xStartLimit = stepPos[currentStep]-stepOffset;
 		xStopLimit = stepPos[currentStep]+stepOffset;
