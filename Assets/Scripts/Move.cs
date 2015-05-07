@@ -7,7 +7,7 @@ public class Move : MonoBehaviour {
 	private float xStopLimit = 0;
 	public int currentStep = 0;
 	public float jumpHeight = 2.5f;
-	public float movementSpeed = 1.5f;
+	public float movementSpeed = .5f;
 	public bool jumping = false;
 
 	public bool aboutToJump;
@@ -20,7 +20,7 @@ public class Move : MonoBehaviour {
 		xStartLimit = stepPos[currentStep]-stepOffset;
 		xStopLimit = stepPos[currentStep]+stepOffset;
 		Rigidbody rigidbody = GetComponent<Rigidbody> ();
-		rigidbody.position = new Vector3 (xStartLimit+1, 0, Random.Range(-0.5f, 0f));
+		rigidbody.position = new Vector3 (6f, 2f, .5f);
 		rigidbody.velocity = new Vector3(movementSpeed, 0, 0);	
 	}
 
@@ -28,10 +28,10 @@ public class Move : MonoBehaviour {
 		Rigidbody lemming = GetComponent<Rigidbody>();
 		listenForJump();
 		listenForDeath();
-		if (notNearLedge(lemming)) {
+		if (notNearLedge(lemming) || inTower(lemming)) {
 			lemming.velocity = new Vector3(movementSpeed, lemming.velocity.y, 0);
 		}
-		if (atLedge(lemming)) {
+		if (atLedge(lemming) && !inTower(lemming)) {
 			if(aboutToJump && atRightLedge(lemming)) {
 				jump(lemming);
 			} else if(aboutToDie && atRightLedge(lemming)) {
@@ -43,9 +43,15 @@ public class Move : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision col) {
+		print (col.gameObject.name);
 		if(col.gameObject.name == "Door" || col.gameObject.name == "Dirt bottom") {
 			print (col.gameObject.name);
 			Destroy(gameObject);
+		}
+		if (col.gameObject.name == "Tower wall") {
+			print (col.gameObject.name);
+			Rigidbody lemming = GetComponent<Rigidbody>();
+			turnAround(lemming);
 		}
 	}
 
@@ -87,6 +93,10 @@ public class Move : MonoBehaviour {
 			aboutToJump = false;
 			aboutToDie = true;
 		}
+	}
+
+	bool inTower(Rigidbody rigidbody) {
+		return rigidbody.position.y > 2;
 	}
 
 	bool atLedge(Rigidbody rigidbody) {
