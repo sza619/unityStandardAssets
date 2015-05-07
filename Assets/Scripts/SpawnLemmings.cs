@@ -106,7 +106,7 @@ public class SpawnLemmings : MonoBehaviour {
 	}
 	
 	void MakeALemmingSpawn() {
-		Transform lemming = Instantiate (spawnLemmings, new Vector3 (Random.Range (-5.0f, -7.4f), 0.733f, 0.0f), spawnLemmings.rotation) as Transform;
+		Transform lemming = Instantiate (spawnLemmings, new Vector3 (Random.Range (-5.0f, -7.4f), 0.733f, Random.Range(-0.5f, 0f)), spawnLemmings.rotation) as Transform;
 		if (lemming.rotation.y > 0) {
 			lemming.Rotate (new Vector3 (0, 180, 0));
 			lemming.GetComponent<Move> ().movementSpeed *= -1.0f;
