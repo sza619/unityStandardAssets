@@ -1179,6 +1179,26 @@ Prefab:
       propertyPath: m_Constraints
       value: 112
       objectReference: {fileID: 0}
+    - target: {fileID: 11450444, guid: 6223f2d12d22f40cc96110230a20c5a3, type: 2}
+      propertyPath: singupformDeath
+      value: 
+      objectReference: {fileID: 725886094}
+    - target: {fileID: 11450444, guid: 6223f2d12d22f40cc96110230a20c5a3, type: 2}
+      propertyPath: confirmationPageDeath
+      value: 
+      objectReference: {fileID: 1391641562}
+    - target: {fileID: 11450444, guid: 6223f2d12d22f40cc96110230a20c5a3, type: 2}
+      propertyPath: verifyPinDeath
+      value: 
+      objectReference: {fileID: 283832545}
+    - target: {fileID: 11450444, guid: 6223f2d12d22f40cc96110230a20c5a3, type: 2}
+      propertyPath: redirected
+      value: 
+      objectReference: {fileID: 970772212}
+    - target: {fileID: 11450444, guid: 6223f2d12d22f40cc96110230a20c5a3, type: 2}
+      propertyPath: redirectedCastle
+      value: 
+      objectReference: {fileID: 821824000}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6223f2d12d22f40cc96110230a20c5a3, type: 2}
   m_IsPrefabParent: 0

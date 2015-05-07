@@ -3,10 +3,6 @@ using System.Collections;
 
 public class Move : MonoBehaviour {
 
-	public Transform singupformDeath;
-	public Transform verifyPinDeath;
-	public Transform confirmationPageDeath;
-
 	private float xStartLimit = 0;
 	private float xStopLimit = 0;
 	public int currentStep = 0;
@@ -19,6 +15,7 @@ public class Move : MonoBehaviour {
 
 	public float stepOffset    = 1.85f; //half the width of a platform
 	public int[] stepPos       = {-6, -2, 2, 6}; //center of the platforms
+
 
 	void Start () {
 		xStartLimit = stepPos[currentStep]-stepOffset;
@@ -48,8 +45,12 @@ public class Move : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col) {
 		print (col.gameObject.name);
-		if(col.gameObject.name == "Door" || col.gameObject.name == "Dirt bottom") {
-			print (col.gameObject.name);
+		if (col.gameObject.name == "Door") {
+			SpawnLemmings.redirectCount++;
+			Destroy(gameObject);
+		}
+		else if (col.gameObject.name == "Dirt bottom") {
+			SpawnLemmings.deathSteps [currentStep]++;
 			Destroy(gameObject);
 		}
 		if (col.gameObject.name == "Tower wall") {
@@ -58,6 +59,8 @@ public class Move : MonoBehaviour {
 			turnAround(lemming);
 		}
 	}
+
+
 
 	void jump(Rigidbody rigidbody) {
 		rigidbody.angularVelocity = Vector3.zero;
