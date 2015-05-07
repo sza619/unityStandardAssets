@@ -4597,6 +4597,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1811978838}
+  - 114: {fileID: 1811978839}
   m_Layer: 0
   m_Name: LemmingGroup
   m_TagString: Untagged
@@ -4618,6 +4619,18 @@ Transform:
   - {fileID: 1967849845}
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!114 &1811978839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1811978837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b509e6494de034e329c0fc614a755553, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraLemming: {fileID: 0}
 --- !u!1001 &1829322387
 Prefab:
   m_ObjectHideFlags: 0
