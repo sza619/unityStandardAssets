@@ -23,13 +23,15 @@ public class SpawnLemmings : MonoBehaviour {
 	void Start () {
 		MakeALemmingSpawn ();
 	}
-	
+
+	int state_increment=300;
+
 	int frame = 0;
 	void Update () {
-		CountAndUpdateLabels ();
 		frame++;
+		CountAndUpdateLabels ();
 
-		if (frame > 3000) {
+		if (frame > 1200) {
 			singupform.GetComponent<TextMesh> ().text = "LOL";
 			singupformDeath.GetComponent<TextMesh> ().text = "LOL";
 			
@@ -41,12 +43,18 @@ public class SpawnLemmings : MonoBehaviour {
 			
 			redirected.GetComponent<TextMesh> ().text = "LOL";
 			redirectedCastle.GetComponent<TextMesh> ().text = "LOL";
+		} else {
+			CountAndUpdateLabels ();
 		}
 
 		if (frame < 5) {
 			MakeALemmingSpawn ();
 		}
-		
+
+		if (frame > 600 && frame % 2 == 0) {
+			MakeALemmingSpawn ();
+		}
+
 		if (frame % 30 != 0) {
 			return;
 		}
@@ -64,7 +72,7 @@ public class SpawnLemmings : MonoBehaviour {
 			break;
 		}
 		
-		if (frame > 1000) {
+		if (frame > 300) {
 			for (var i=0; i<lemmingList.Count; i++) {
 				if (lemmingList[i] != null) {
 					lemmingList[i].GetComponent<Move>().aboutToJump = true;
@@ -72,27 +80,13 @@ public class SpawnLemmings : MonoBehaviour {
 			}
 		}
 		
-		if (frame > 1500) {
-			MakeALemmingSpawn ();
-		}
-		
-		if (frame > 2000) {
-			for (var i=0; i<lemmingList.Count; i++) {
+		if (frame > 1200) {
+			for (int i=0; i<lemmingList.Count; i++) {
 				if (lemmingList[i] != null) {
-					lemmingList[i].GetComponent<Move>().movementSpeed++;
-					singupform.GetComponent<TextMesh>().text="LOL";
-					singupform.GetComponent<TextMesh>().text="LOL";
-					singupform.GetComponent<TextMesh>().text="LOL";
-					singupform.GetComponent<TextMesh>().text="LOL";
-					singupform.GetComponent<TextMesh>().text="LOL";
-					singupform.GetComponent<TextMesh>().text="LOL";
-					singupform.GetComponent<TextMesh>().text="LOL";
-
+					lemmingList[i].GetComponent<Move>().movementSpeed*=1.9f;
 				}
 			}
 		}
-
-
 	}
 	
 	void MakeALemmingJump() {
@@ -112,8 +106,11 @@ public class SpawnLemmings : MonoBehaviour {
 	}
 	
 	void MakeALemmingSpawn() {
-		Transform lemming = Instantiate(spawnLemmings, new Vector3(-7.081089f, 0.0f, 0.0f), Quaternion.identity) as Transform;
-
+		Transform lemming = Instantiate(spawnLemmings, new Vector3(Random.Range (-4.0f,-7.4f), 0.733f, 0.0f), Quaternion.identity) as Transform;
+		Debug.Log ("Spawned lemming: " + lemming);
+		Debug.Log ("Position: " + lemming.position);
+		Debug.Log ("LocalPosition: " + lemming.localPosition);
+		lemming.GetComponent<Move> ().movementSpeed *= 3.0f;
 		lemmingList.Add(lemming);
 	}
 	
@@ -122,14 +119,35 @@ public class SpawnLemmings : MonoBehaviour {
 	}
 
 	void CountAndUpdateLabels() {
+		int singupFormCount = 0;
+		int verifyPinCount = 0;
+		int confirmationPageCount = 0;
+		int redirectedPageCount = 0;
+
 		for (var i=0; i<lemmingList.Count; i++) {
 			if (lemmingList[i] != null) {
 				switch (lemmingList[i].GetComponent<Move>().currentStep) {
 				case 0:
+					singupFormCount++;
+					break;
+				case 1:
+					verifyPinCount++;
+					break;
+				case 2:
+					confirmationPageCount++;
+					break;
+				case 3:
+					redirectedPageCount++;
 					break;
 				}
 			}
 		}
+
+		singupform.GetComponent<TextMesh> ().text = singupFormCount + " users";
+		verifyPin.GetComponent<TextMesh> ().text = verifyPinCount + " users";
+		confirmationPage.GetComponent<TextMesh> ().text = confirmationPageCount + " users";
+		redirected.GetComponent<TextMesh> ().text = redirectedPageCount + " users";
+		redirectedCastle.GetComponent<TextMesh> ().text = "" + redirectedPageCount;
 	}
 	
 }
