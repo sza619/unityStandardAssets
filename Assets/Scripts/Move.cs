@@ -41,14 +41,14 @@ public class Move : MonoBehaviour {
 		listenForDeath();
 		if (notNearLedge(lemming) || inTower(lemming)) {
 			lemming.velocity = new Vector3(movementSpeed, lemming.velocity.y, 0);
-			if (!aboutToDie && !aboutToJump) {
+			if (!aboutToDie && !aboutToJump && !immortal) {
 				lemming.AddForce(Vector3.up*Mathf.Sin (frame)/2.0f, ForceMode.VelocityChange);
 			}
 		}
 		if (atLedge(lemming) && !inTower(lemming)) {
-			if(aboutToJump && atRightLedge(lemming)) {
+			if((aboutToJump || immortal) && atRightLedge(lemming)) {
 				jump(lemming);
-			} else if(aboutToDie && atRightLedge(lemming)) {
+			} else if(!immortal && aboutToDie && atRightLedge(lemming)) {
 				die(lemming);
 			} else {
 				turnAround(lemming);
@@ -61,7 +61,14 @@ public class Move : MonoBehaviour {
 			ParticleSystem fireworks = Instantiate(fireworksPrefab);
 			fireworks.Play();
 			SpawnLemmings.redirectCount++;
-			Destroy(gameObject);
+			if (!immortal) {
+				Destroy(gameObject);
+			} else {
+				currentStep=0;
+				transform.Translate(Vector3.left*13.0f);
+				xStopLimit = stepPos[currentStep]+stepOffset;
+				xStartLimit = stepPos[currentStep]-stepOffset;
+			}
 		}
 		else if (col.gameObject.name == "Dirt bottom") {
 			ParticleSystem blood = Instantiate(bloodPrefab);
