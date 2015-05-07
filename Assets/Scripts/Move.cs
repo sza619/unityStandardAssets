@@ -54,7 +54,6 @@ public class Move : MonoBehaviour {
 	void die(Rigidbody rigidbody) {
 		rigidbody.velocity = new Vector3(movementSpeed/4, rigidbody.velocity.y, 0);
 		updateLimits();
-		updatePositions();
 	}
 
 	void turnAround(Rigidbody rigidbody) {
