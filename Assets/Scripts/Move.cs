@@ -47,7 +47,12 @@ public class Move : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision col) {
-		if(col.gameObject.name == "Door" || col.gameObject.name == "Dirt bottom") {
+		if (col.gameObject.name == "Door") {
+			SpawnLemmings.redirectCount++;
+			Destroy(gameObject);
+		}
+		else if (col.gameObject.name == "Dirt bottom") {
+			SpawnLemmings.deathSteps[currentStep]++;
 			Destroy(gameObject);
 		}
 		if (col.gameObject.name == "Tower wall") {
@@ -73,6 +78,7 @@ public class Move : MonoBehaviour {
 		rigidbody.AddForce(Vector3.up*jumpHeight/2.0f, ForceMode.VelocityChange);
 		currentStep++;
 		StartCoroutine(updateLimits());
+		currentStep--;
 	}
 
 	void turnAround(Rigidbody rigidbody) {
