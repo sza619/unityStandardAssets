@@ -32,6 +32,18 @@ public class SpawnLemmings : MonoBehaviour {
 			MakeALemmingSpawn();
 			break;
 		}
+
+		if (frame > 1500) {
+			MakeALemmingSpawn ();
+		}
+
+		if (frame > 1000) {
+			Debug.Log("Vi har fiksa connect");
+
+			for (var i=0; i<lemmingList.Count; i++) {
+				lemmingList[i].GetComponent<Move>().aboutToJump = true;
+			}
+		}
 	}
 
 	void MakeALemmingJump() {
