@@ -486,7 +486,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 184530, guid: 8e499e18f5508459ca7d49b588626972, type: 2}
       propertyPath: m_Name
-      value: Grass 1
+      value: Grass
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8e499e18f5508459ca7d49b588626972, type: 2}
@@ -676,7 +676,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 132150, guid: a417b64be501d4f788917ee5e64d4fbb, type: 2}
       propertyPath: m_Name
-      value: Dirt 1
+      value: Dirt
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6116412, guid: a417b64be501d4f788917ee5e64d4fbb, type: 2}
@@ -1048,7 +1048,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 184530, guid: 8e499e18f5508459ca7d49b588626972, type: 2}
       propertyPath: m_Name
-      value: Grass 2
+      value: Grass
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8e499e18f5508459ca7d49b588626972, type: 2}
@@ -1509,7 +1509,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 132150, guid: a417b64be501d4f788917ee5e64d4fbb, type: 2}
       propertyPath: m_Name
-      value: Dirt 2
+      value: Dirt
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6116412, guid: a417b64be501d4f788917ee5e64d4fbb, type: 2}
@@ -2030,7 +2030,7 @@ GameObject:
   - 65: {fileID: 1708623247}
   - 23: {fileID: 1708623246}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2132,7 +2132,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 132150, guid: a417b64be501d4f788917ee5e64d4fbb, type: 2}
       propertyPath: m_Name
-      value: Dirt 3
+      value: Dirt
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6116412, guid: a417b64be501d4f788917ee5e64d4fbb, type: 2}
@@ -2179,7 +2179,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 184530, guid: 8e499e18f5508459ca7d49b588626972, type: 2}
       propertyPath: m_Name
-      value: Grass 3
+      value: Grass
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8e499e18f5508459ca7d49b588626972, type: 2}

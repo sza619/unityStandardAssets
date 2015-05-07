@@ -42,6 +42,13 @@ public class Move : MonoBehaviour {
 		}
 	}
 
+	void OnCollisionEnter(Collision col) {
+		if(col.gameObject.name == "Door" || col.gameObject.name == "Dirt bottom") {
+			print (col.gameObject.name);
+			Destroy(gameObject);
+		}
+	}
+
 	void jump(Rigidbody rigidbody) {
 		rigidbody.angularVelocity = Vector3.zero;
 		rigidbody.velocity = new Vector3(movementSpeed, 0, 0);
