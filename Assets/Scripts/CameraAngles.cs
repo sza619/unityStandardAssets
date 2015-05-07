@@ -9,12 +9,16 @@ public class CameraAngles : MonoBehaviour {
 	public Camera walkAwayAngleCam;
 	public Camera walkTowardsAngleCam;
 	public Camera topDown;
-	
+	public Camera walkWithCam;
+
 	void Start () {
 		StartCoroutine(gogoCameras ());
 	}
 
 	IEnumerator gogoCameras() {
+		switchToCam (walkWithCam);
+		yield return new WaitForSeconds(50f);
+
 		switchToCam (mainCam);
 		yield return new WaitForSeconds(5f);
 
