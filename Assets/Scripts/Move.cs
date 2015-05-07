@@ -47,13 +47,10 @@ public class Move : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision col) {
-		print (col.gameObject.name);
 		if(col.gameObject.name == "Door" || col.gameObject.name == "Dirt bottom") {
-			print (col.gameObject.name);
 			Destroy(gameObject);
 		}
 		if (col.gameObject.name == "Tower wall") {
-			print (col.gameObject.name);
 			Rigidbody lemming = GetComponent<Rigidbody>();
 			turnAround(lemming);
 		}
