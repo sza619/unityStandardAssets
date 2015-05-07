@@ -19,21 +19,25 @@ public class SpawnLemmings : MonoBehaviour {
 
 	public Transform spawnLemmings;
 	List<Transform> lemmingList = new List<Transform>();
-	
+
+	public static int redirectCount=0;
+	public static int[] deathSteps = new int[3];
+
 	void Start () {
 		MakeALemmingSpawn ();
 	}
 
-	int state_increment=300;
+	int state_increment=600;
 
 	int frame = 0;
 	void Update () {
 		frame++;
-		if (frame % 10 == 0) {
+		if (frame % 20 == 0) {
 			MakeALemmingSpawn ();
 		}
 
 		CountAndUpdateLabels ();
+		updateText();
 
 		if (frame > state_increment*5) {
 			singupform.GetComponent<TextMesh> ().text = "LOL";
@@ -44,9 +48,6 @@ public class SpawnLemmings : MonoBehaviour {
 			
 			confirmationPage.GetComponent<TextMesh> ().text = "LOL";
 			confirmationPageDeath.GetComponent<TextMesh> ().text = "LOL";
-			
-			redirected.GetComponent<TextMesh> ().text = "LOL";
-			redirectedCastle.GetComponent<TextMesh> ().text = "LOL";
 		} else {
 			CountAndUpdateLabels ();
 		}
@@ -85,7 +86,7 @@ public class SpawnLemmings : MonoBehaviour {
 		if (frame > state_increment*4) {
 			for (int i=0; i<lemmingList.Count; i++) {
 				if (lemmingList[i] != null) {
-					lemmingList[i].GetComponent<Move>().movementSpeed*=1.9f;
+					lemmingList[i].GetComponent<Move>().movementSpeed+=5.5f;
 				}
 			}
 		}
@@ -107,11 +108,15 @@ public class SpawnLemmings : MonoBehaviour {
 	
 	void MakeALemmingSpawn() {
 		Transform lemming = Instantiate (spawnLemmings, new Vector3 (Random.Range (-5.0f, -7.4f), 0.733f, Random.Range(-0.5f, 0f)), spawnLemmings.rotation) as Transform;
+		lemming.transform.parent = spawnLemmings.parent;
 		if (lemming.rotation.y > 0) {
 			lemming.Rotate (new Vector3 (0, 180, 0));
 			lemming.GetComponent<Move> ().movementSpeed *= -1.0f;
 		} 
 		lemming.GetComponent<Move> ().movementSpeed *= 3.0f;
+		if (Random.value > 0.6) {
+			lemming.GetComponent<Move> ().aboutToJump=true;
+		}
 		lemmingList.Add(lemming);
 	}
 	
@@ -147,8 +152,14 @@ public class SpawnLemmings : MonoBehaviour {
 		singupform.GetComponent<TextMesh> ().text = singupFormCount + " users";
 		verifyPin.GetComponent<TextMesh> ().text = verifyPinCount + " users";
 		confirmationPage.GetComponent<TextMesh> ().text = confirmationPageCount + " users";
-		redirected.GetComponent<TextMesh> ().text = redirectedPageCount + " users";
-		redirectedCastle.GetComponent<TextMesh> ().text = "" + redirectedPageCount;
 	}
-	
+
+	void updateText() {
+		singupformDeath.GetComponent<TextMesh> ().text = "" + deathSteps[0];
+		verifyPinDeath.GetComponent<TextMesh> ().text = "" + deathSteps[1];
+		confirmationPageDeath.GetComponent<TextMesh> ().text = "" + deathSteps[2];
+		redirected.GetComponent<TextMesh> ().text = "" + redirectCount;
+		redirectedCastle.GetComponent<TextMesh> ().text = "" + redirectCount;
+		redirectedCastle.GetComponent<TextMesh> ().fontSize = 125 + redirectCount;
+	}
 }
