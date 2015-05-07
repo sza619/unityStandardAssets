@@ -12,7 +12,8 @@ public class Move : MonoBehaviour {
 	public int currentStep = 0;
 	public float jumpHeight; // set in editor
 	public float movementSpeed = .5f;
-	public bool jumping = false;
+
+	public ParticleSystem fireworksPrefab;
 
 	public bool aboutToJump;
 	public bool aboutToDie;
@@ -48,6 +49,8 @@ public class Move : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col) {
 		if (col.gameObject.name == "Door") {
+			ParticleSystem fireworks = Instantiate(fireworksPrefab);
+			fireworks.Play();
 			SpawnLemmings.redirectCount++;
 			Destroy(gameObject);
 		}
