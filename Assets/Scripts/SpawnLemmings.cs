@@ -33,6 +33,10 @@ public class SpawnLemmings : MonoBehaviour {
 	void Update () {
 		frame++;
 
+		if (Input.GetKeyDown (KeyCode.S)) {
+			MakeALemmingSpawn();
+		}
+		
 		if (SceneState.retardMode) {
 			MakeALemmingSpawn ();
 			for (int i=0; i<lemmingList.Count; i++) {
@@ -90,7 +94,7 @@ public class SpawnLemmings : MonoBehaviour {
 			lemmingList [ind].GetComponent<Move> ().aboutToJump = true;
 		}
 	}
-	
+
 	void MakeALemmingDie() {
 		var ind = randomLemmingIndex();
 		if (lemmingList [ind] != null) {
