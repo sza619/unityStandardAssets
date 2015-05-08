@@ -23,6 +23,10 @@ public class SpawnLemmings : MonoBehaviour {
 	public static int redirectCount=0;
 	public static int[] deathSteps = new int[3];
 
+	public float heatmapConstant=1.1f;
+
+	public static int lastRedirectFrame=0;
+
 	void Start () {
 		MakeALemmingSpawn ();
 	}
@@ -36,6 +40,21 @@ public class SpawnLemmings : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.S)) {
 			MakeALemmingSpawn();
 		}
+
+		int framesSinceLastFrame = frame - lastRedirectFrame;
+		float increase = 2.1f-Mathf.Pow (2.0f, Mathf.Min (heatmapConstant, frame-lastRedirectFrame))/(heatmapConstant+1.0f);
+		float ms = 0.05f + increase;
+		Debug.Log ("Frames since last frame=" + framesSinceLastFrame);
+		Debug.Log (lastRedirectFrame - frame);
+
+		if (spawnLemmings.GetComponent<Move> ().movementSpeed < 0) {
+			spawnLemmings.GetComponent<Move> ().movementSpeed = (-1.0f)*ms;
+		} else {
+			spawnLemmings.GetComponent<Move> ().movementSpeed = ms;
+		}
+
+		//spawnLemmings.GetComponent<Move>().movementSpeed=((2.5f/4.0f)+(redirectCount/frame))*(spawnLemmings.rotation.y/180.0f);
+		Debug.Log ((redirectCount / frame) * (spawnLemmings.rotation.y / 180.0f));
 		
 		if (SceneState.retardMode) {
 			MakeALemmingSpawn ();
@@ -124,7 +143,7 @@ public class SpawnLemmings : MonoBehaviour {
 		if (Random.value > 0.6) {
 			lemming.GetComponent<Move> ().aboutToJump=true;
 		}
-		lemming.GetComponent<Move> ().movementSpeed *= Random.Range (0.75f, 1f);
+		lemming.GetComponent<Move> ().movementSpeed = Random.Range (0.75f, 1f)*(lemming.GetComponent<Move> ().movementSpeed/Mathf.Abs(lemming.GetComponent<Move> ().movementSpeed));
 		lemmingList.Add(lemming);
 	}
 	

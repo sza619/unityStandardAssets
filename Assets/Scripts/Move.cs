@@ -62,6 +62,8 @@ public class Move : MonoBehaviour {
 			fireworks.transform.parent = fireworksPrefab.transform.parent;
 			fireworks.Play();
 			SpawnLemmings.redirectCount++;
+			SpawnLemmings.lastRedirectFrame=frame;
+
 			if (!immortal) {
 				Destroy(gameObject);
 			} else {
