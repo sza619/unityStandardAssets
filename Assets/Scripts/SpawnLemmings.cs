@@ -42,7 +42,6 @@ public class SpawnLemmings : MonoBehaviour {
 		}
 
 		float ms = 0.5f + stress;
-		Debug.Log (lastRedirectFrame - frame);
 
 		if (spawnLemmings.GetComponent<Move> ().movementSpeed < 0) {
 			spawnLemmings.GetComponent<Move> ().movementSpeed = (-1.0f)*ms;
@@ -50,9 +49,6 @@ public class SpawnLemmings : MonoBehaviour {
 			spawnLemmings.GetComponent<Move> ().movementSpeed = ms;
 		}
 
-		//spawnLemmings.GetComponent<Move>().movementSpeed=((2.5f/4.0f)+(redirectCount/frame))*(spawnLemmings.rotation.y/180.0f);
-		Debug.Log ((redirectCount / frame) * (spawnLemmings.rotation.y / 180.0f));
-		
 		if (SceneState.retardMode) {
 			MakeALemmingSpawn ();
 			for (int i=0; i<lemmingList.Count; i++) {
