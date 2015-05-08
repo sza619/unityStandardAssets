@@ -59,6 +59,7 @@ public class Move : MonoBehaviour {
 	void OnCollisionEnter(Collision col) {
 		if (col.gameObject.name == "Door") {
 			ParticleSystem fireworks = Instantiate(fireworksPrefab);
+			fireworks.transform.parent = fireworksPrefab.transform.parent;
 			fireworks.Play();
 			SpawnLemmings.redirectCount++;
 			if (!immortal) {
@@ -74,6 +75,7 @@ public class Move : MonoBehaviour {
 			ParticleSystem blood = Instantiate(bloodPrefab);
 			blood.transform.position = gameObject.transform.position;
 			blood.transform.position = new Vector3(gameObject.transform.position.x, -3.382f, 0);
+			blood.transform.parent = bloodPrefab.transform.parent;
 			blood.Play();
 			SpawnLemmings.deathSteps[currentStep]++;
 			Destroy(gameObject);
