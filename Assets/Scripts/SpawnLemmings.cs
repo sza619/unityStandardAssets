@@ -87,7 +87,18 @@ public class SpawnLemmings : MonoBehaviour {
 			break;
 		}
 	}
-	
+
+	void OnGUI() {
+		Event e = Event.current;
+		if (e.isKey) {
+			switch (e.keyCode) {
+			case KeyCode.Space:
+				MakeALemmingSpawn();
+				break;
+			}
+		}
+	}
+				
 	void MakeALemmingJump() {
 		var ind = randomLemmingIndex();
 		if (lemmingList [ind] != null) {
