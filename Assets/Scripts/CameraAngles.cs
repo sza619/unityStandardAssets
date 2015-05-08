@@ -11,6 +11,7 @@ public class CameraAngles : MonoBehaviour {
 	public Camera topDown;
 	public Camera firstPersonCam;
 	public Camera rotateAroundSceneCam;
+	public Camera rotateAroundSceneHigherCam;
 
 	void Start () {
 		switchToCam (mainCam);
@@ -44,9 +45,11 @@ public class CameraAngles : MonoBehaviour {
 			case KeyCode.Alpha8:
 				switchToCam (rotateAroundSceneCam);
 				break;
+			case KeyCode.Alpha9:
+				switchToCam (rotateAroundSceneHigherCam);
+				break;
 			}
 		}
-		
 	}
 	
 	void switchToCam(Camera camera) {
@@ -57,6 +60,7 @@ public class CameraAngles : MonoBehaviour {
 		walkTowardsAngleCam.enabled = false;
 		topDown.enabled = false;
 		rotateAroundSceneCam.enabled = false;
+		rotateAroundSceneHigherCam.enabled = false;
 		camera.enabled = true;
 	}
 
