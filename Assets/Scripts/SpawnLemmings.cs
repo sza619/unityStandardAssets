@@ -23,13 +23,13 @@ public class SpawnLemmings : MonoBehaviour {
 	public static int redirectCount=0;
 	public static int[] deathSteps = new int[3];
 
-	public float heatmapConstant=1.1f;
-
 	public static int lastRedirectFrame=0;
 
 	void Start () {
 		MakeALemmingSpawn ();
 	}
+
+	public static float stress=0.0f;
 
 	int state_increment=600;
 
@@ -41,10 +41,7 @@ public class SpawnLemmings : MonoBehaviour {
 			MakeALemmingSpawn();
 		}
 
-		int framesSinceLastFrame = frame - lastRedirectFrame;
-		float increase = 2.1f-Mathf.Pow (2.0f, Mathf.Min (heatmapConstant, frame-lastRedirectFrame))/(heatmapConstant+1.0f);
-		float ms = 0.05f + increase;
-		Debug.Log ("Frames since last frame=" + framesSinceLastFrame);
+		float ms = 0.5f + stress;
 		Debug.Log (lastRedirectFrame - frame);
 
 		if (spawnLemmings.GetComponent<Move> ().movementSpeed < 0) {

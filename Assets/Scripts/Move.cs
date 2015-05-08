@@ -62,7 +62,7 @@ public class Move : MonoBehaviour {
 			fireworks.transform.parent = fireworksPrefab.transform.parent;
 			fireworks.Play();
 			SpawnLemmings.redirectCount++;
-			SpawnLemmings.lastRedirectFrame=frame;
+			StartCoroutine(increaseStress());
 
 			if (!immortal) {
 				Destroy(gameObject);
@@ -86,6 +86,12 @@ public class Move : MonoBehaviour {
 			Rigidbody lemming = GetComponent<Rigidbody>();
 			turnAround(lemming);
 		}
+	}
+
+	IEnumerator increaseStress() {
+		SpawnLemmings.stress = 1.5f;
+		yield return new WaitForSeconds(1);	
+		SpawnLemmings.stress = 0.0f;
 	}
 
 	void jump(Rigidbody rigidbody) {
