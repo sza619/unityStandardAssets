@@ -97,8 +97,10 @@ public class Move : MonoBehaviour {
 	void jump(Rigidbody rigidbody) {
 		rigidbody.angularVelocity = Vector3.zero;
 		rigidbody.velocity = new Vector3(movementSpeed, 0, 0);
-		rigidbody.AddForce(Vector3.up*jumpHeight, ForceMode.VelocityChange);
-		aboutToJump = false;
+		rigidbody.AddForce(Vector3.up*jumpHeight*Time.deltaTime*60.0f, ForceMode.VelocityChange);
+		if (Random.value < 0.4) {
+			aboutToJump = false;
+		}
 		currentStep++;
 		StartCoroutine(updateLimits());
 	}
