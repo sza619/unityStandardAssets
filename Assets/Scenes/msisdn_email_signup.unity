@@ -9775,7 +9775,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1467151148}
-  speed: 5
+  speed: 4
+  bounds: 10
 --- !u!1001 &1829322387
 Prefab:
   m_ObjectHideFlags: 0
